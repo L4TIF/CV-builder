@@ -18,7 +18,14 @@ const SkillsInfo = ({ skillsList, setSkillsList }) => {
   };
 
   return (
-    <div className="rounded-lg border border-white border-opacity-10 p-5 shadow-lg">
+
+
+    <div  tabIndex={0}  className=" collapse bg-base-200 rounded-lg border border-white border-opacity-10 shadow-lg  collapse-arrow">
+    <input type="checkbox" />
+    <h2 className="collapse-title font-bold text-2xl">Skills</h2>
+    <div className="collapse-content">
+    <div className="">
+     
       {skillsList.map((skill, index) => (
         <form
           key={index}
@@ -51,10 +58,18 @@ const SkillsInfo = ({ skillsList, setSkillsList }) => {
           </button>
         </form>
       ))}
-      <button onClick={addSkill} className="btn btn-outline mx-auto mt-5 block">
+      <button onClick={addSkill} className="btn btn-sm btn-outline mx-auto mt-5 block">
         Add Skill
       </button>
     </div>
+    </div>
+  </div>
+
+
+
+
+
+    
   );
 };
 

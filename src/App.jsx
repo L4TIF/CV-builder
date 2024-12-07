@@ -9,8 +9,6 @@ import {
 import Preview from "./components/resumePreview/Preview";
 import demoData from "./data/demoData";
 
-
-
 const App = () => {
   const [generalInfo, setGeneralInfo] = useState(demoData.generalInfo);
   const [skillsList, setSkillsList] = useState(demoData.skillList);
@@ -19,10 +17,10 @@ const App = () => {
 
   useEffect(() => {
     const savedCategories = [
-      'generalInfo',
-      'educationList',
-      'workList',
-      'skillList',
+      "generalInfo",
+      "educationList",
+      "workList",
+      "skillList",
     ];
     const setStateFunctions = [
       setGeneralInfo,
@@ -32,9 +30,8 @@ const App = () => {
     ];
 
     savedCategories.forEach((key, index) => {
-      
       const savedCategory = localStorage.getItem(key);
-   
+
       if (savedCategory) {
         setStateFunctions[index](JSON.parse(savedCategory));
       }
@@ -43,15 +40,14 @@ const App = () => {
 
   useEffect(() => {
     const savedCategories = [
-      'generalInfo',
-      'educationList',
-      'workList',
-      'skillList',
+      "generalInfo",
+      "educationList",
+      "workList",
+      "skillList",
     ];
     const savedInfo = [generalInfo, educationList, workList, skillsList];
 
     savedCategories.forEach((key, index) => {
-
       localStorage.setItem(key, JSON.stringify(savedInfo[index]));
     });
   }, [generalInfo, educationList, workList, skillsList]);
@@ -65,14 +61,22 @@ const App = () => {
               generalInfo={generalInfo}
               setGeneralInfo={setGeneralInfo}
             />
+            <EducationInfo
+              educationList={educationList}
+              setEducationList={setEducationList}
+            />
             <SkillsInfo skillsList={skillsList} setSkillsList={setSkillsList} />
-            <WorkExpInfo />
-            <EducationInfo />
+            <WorkExpInfo workList={workList} setWorkList={setWorkList} />
           </div>
         </div>
 
         <div className="h-fit w-full">
-          <Preview generalInfo={generalInfo} skillsList={skillsList} />
+          <Preview
+            generalInfo={generalInfo}
+            skillsList={skillsList}
+            educationList={educationList}
+            workList={workList}
+          />
         </div>
       </div>
       {/* <ThemeToggler /> */}
