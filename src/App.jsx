@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   BasicInfo,
@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useReactToPrint } from "react-to-print";
 import useLocalStorage from "./hooks/useLocalStorage";
+import Alert from "./components/Alert";
 
 const App = () => {
   const [generalInfo, setGeneralInfo] = useLocalStorage(
@@ -31,12 +32,28 @@ const App = () => {
     demoData.workList,
   );
 
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    setShowAlert(true);
+  
+    
+    const timer = setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
+  
+    return () => clearTimeout(timer);
+  }, []);
+
   //for print ref
   const contentRef = useRef();
-  const handlePrint = useReactToPrint({ contentRef });
+  const handlePrint = useReactToPrint({
+    contentRef,
+  });
 
   return (
     <>
+      {showAlert && <Alert />}
       <Header handlePrint={handlePrint} />
       <div className="mx-auto flex flex-col-reverse gap-20 md:w-4/5 lg:flex-row">
         <div className="h-fit w-full">

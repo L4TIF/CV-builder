@@ -7,7 +7,7 @@ const Header = ({handlePrint}) => {
         CV Builder
       </h1>
       <div className="right flex flex-row-reverse items-center justify-between gap-5 md:flex-row md:justify-center">
-        <button onClick={handlePrint} className="btn text-white  btn-success  btn-sm md:btn-md">
+        <button  onClick={handlePrint} className="btn text-white  btn-success  btn-sm md:btn-md">
           Save / Print
         </button>
         <ThemeToggler />
