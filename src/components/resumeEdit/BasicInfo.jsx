@@ -43,8 +43,8 @@ const BasicInfo = ({ generalInfo, setGeneralInfo }) => {
                   type="text"
                   className="grow"
                   placeholder="Full name"
-                  value={generalInfo.fullname}
-                  onChange={(e) => handleChange("fullname", e.target.value)}
+                  value={generalInfo.fullName}
+                  onChange={(e) => handleChange("fullName", e.target.value)}
                 />
               </label>
 
@@ -94,7 +94,7 @@ const BasicInfo = ({ generalInfo, setGeneralInfo }) => {
                 modules={{ toolbar: toolbarOptions }}
                 value={generalInfo.aboutme}
                 onChange={(value) => handleChange("aboutme", value)}
-                className="textarea textarea-bordered w-full"
+                
                 placeholder="About me"
                   theme="snow"
               />

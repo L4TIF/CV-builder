@@ -6,10 +6,12 @@ export default function ThemeToggler() {
   );
   useEffect(() => {
     localStorage.setItem("isdark", JSON.stringify(isdark));
+    const theme = isdark ? "light" : "dark";
+    document.querySelector("html").setAttribute("data-theme", theme);
   }, [isdark]);
   return (
     <>
-      <label className="swap swap-rotate ">
+      <label className="swap swap-rotate">
         {/* this hidden checkbox controls the state */}
         <input
           type="checkbox"

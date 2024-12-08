@@ -34,7 +34,9 @@ const EducationInfo = ({ educationList, setEducationList }) => {
             className={`collapse collapse-plus mb-3 border border-white border-opacity-10 bg-base-100`}
           >
             <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">{edu.name ? edu.name : "Enter Institute Details" }</div>
+            <div className="collapse-title text-xl font-medium">
+              {edu.name ? edu.name : "Enter Institute Details"}
+            </div>
             <div className="collapse-content flex flex-col gap-3">
               {/* Institute Name */}
               <label
@@ -45,7 +47,6 @@ const EducationInfo = ({ educationList, setEducationList }) => {
                 <input
                   name="name"
                   onChange={(e) => handleInputChange(e, index)}
-                  
                   type="text"
                   className="grow"
                   value={edu.name}
@@ -60,7 +61,6 @@ const EducationInfo = ({ educationList, setEducationList }) => {
                 <input
                   name="degree"
                   onChange={(e) => handleInputChange(e, index)}
-                 
                   type="text"
                   className="grow"
                   value={edu.degree}
@@ -73,17 +73,13 @@ const EducationInfo = ({ educationList, setEducationList }) => {
                 Passing year
                 {/* Institute year */}
                 <input
-               
                   name="year"
                   onChange={(e) => handleInputChange(e, index)}
-                 
                   type="number"
                   max={2030}
                   min={1950}
-                 
                   className="grow [max-length:4]"
                   value={edu.year}
-                  
                 />
               </label>
 

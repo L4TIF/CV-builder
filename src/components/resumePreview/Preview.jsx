@@ -1,40 +1,78 @@
-const Preview = ({ generalInfo, skillsList, educationList, workList }) => {
+const Preview = ({
+  generalInfo,
+  skillsList,
+  educationList,
+  workList,
+  contentRef,
+}) => {
   return (
-    <div className="mx-auto w-4/5">
-      <h1>Full Name:{generalInfo.fullname}</h1>
-      <h3>Email: {generalInfo.email}</h3>
-      <h3>Phone: {generalInfo.phone}</h3>
-      <h3>About me: {generalInfo.aboutme}</h3>
+    <div className="mx-auto text-sm resume-container" ref={contentRef}>
+      {/* General Info */}
+      <div className="general-info">
+      <h1 className="mb-2 mt-4 text-center text-2xl font-bold">{generalInfo.fullName}</h1>
+      <div className="contactContainer mb-2 flex justify-center gap-10">
+        <h3>Phone: {generalInfo.phone}</h3>
+        <h3>Email: {generalInfo.email}</h3>
+      </div>
+      </div>
+      <hr />
 
-      <ul className="list-inside list-disc">
-        <h3 className="my-5 text-2xl font-bold">Skill</h3>
-        {skillsList.map((skill, index) => (
-          <li key={index}>{skill.name}</li>
-        ))}
-      </ul>
+      {/* Summary */}
+      <div className="mx-4 mt-4 flex gap-16">
+        <h2 className="font-bold">Summary</h2>
+        <p className="mr-6" dangerouslySetInnerHTML={{ __html: generalInfo.aboutme }}></p>
+      </div>
 
-      <ul className="list-inside">
-        <h3 className="my-5 text-2xl font-bold">Education</h3>
-        {educationList.map((edu, index) => (
-          <li key={index} className="my-3">
-            <h2>{edu.name}</h2>
-            <h3>{edu.degree}</h3>
-            <p>{edu.year}</p>
-          </li>
-        ))}
-      </ul>
+      <hr className="my-4" />
 
-      <ul className="list-inside">
-        <h3 className="my-5 text-2xl font-bold">Work Experience</h3>
-        {workList.map((Work, index) => (
-          <li key={index} className="my-3">
-            <h2>{Work.name}</h2>
-            <h3>{Work.title}</h3>
-            <p>{Work.date}</p>
-            <p>{Work.description}</p>
-          </li>
-        ))}
-      </ul>
+      {/* Skills */}
+      <div className="mx-4 flex gap-16">
+        <h3 className="mr-10 font-bold">Skills</h3>
+        <ul className="w-full">
+          {skillsList.map((skill, index) => (
+            <li className="font-semibold" key={index}>
+              {skill.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <hr className="my-4" />
+
+      {/* Work Experience */}
+      <div className="mx-4 flex gap-16 work-experience">
+        <h3 className="font-bold">Work Experience</h3>
+        <div>
+          {workList.map((Work, index) => (
+            <div key={index} className="my-3">
+              <div className="w-full flex justify-between">
+                <h3 className="font-bold">{Work.title}</h3>
+                <p className="font-semibold">{Work.date}</p>
+              </div>
+              <h2 className="font-semibold">{Work.name}</h2>
+              <div className="list-disc" dangerouslySetInnerHTML={{ __html: Work.description }}></div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <hr className="my-4" />
+
+      {/* Education */}
+      <div className="mx-4 flex gap-16 education">
+        <h2 className="font-bold">Education</h2>
+        <ul className="w-full">
+          {educationList.map((edu, index) => (
+            <li key={index} className="mb-2 flex justify-between">
+              <div>
+                <h2 className="font-semibold">{edu.name}</h2>
+                <h3>{edu.degree}</h3>
+              </div>
+              <p>{edu.year}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

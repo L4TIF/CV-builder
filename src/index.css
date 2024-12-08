@@ -14,4 +14,89 @@ html {
   -ms-overflow-style: none; /* IE and Edge */
 }
 
+.quill {
+  overflow: hidden;
+  border: 1px solid #cccccc7e !important;
+  border-radius: 10px;
+}
 
+.quill .ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid #cccccc7e !important;
+}
+
+.quill .ql-container {
+  border: none !important;
+}
+
+/* Print Layout (to ensure proper formatting when printed) */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.75in;
+  }
+
+  body {
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  .resume-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Ensure sections do not break in the middle */
+  .general-info, .work-experience, .education {
+    page-break-inside: avoid;
+  }
+
+  /* Hide unnecessary elements for printing */
+  .no-print {
+    display: none;
+  }
+}
+
+/* Screen Layout (for smaller viewports) */
+@media screen {
+  /* Mobile/Tablet: Adjust sections for small screen */
+  @media (max-width: 768px) {
+    .resume-container {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .header {
+      font-size: 16px;
+    }
+
+    /* Stack elements for mobile */
+    .general-info, .work-experience, .education {
+      width: 100%;
+      padding: 5px;
+    }
+    .work-experience{
+     gap: 5px;
+     font-size: 8px;
+    }
+
+    /* Adjust font sizes */
+    h1, h2, h3 {
+      font-size: 10px;
+    }
+    p{
+      font-size: 10px;
+    }
+
+    ul {
+      font-size: 10px;
+      list-style-position: inside;
+    }
+  }
+}
+
+
+ul {
+  list-style: disc !important;
+}
